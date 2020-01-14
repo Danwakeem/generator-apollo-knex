@@ -59,16 +59,14 @@ module.exports = class extends Generator {
     if (fs.existsSync("src/schemas/index.ts")) {
       const path = "src/schemas/index.ts";
       const content = this.fs.read(path);
-      const replace = `, ${name} };`
-      const newContent = content.replace(/(,\s*|\s*)};/gmi, replace);
+      const replace = `, ${this.answers.name} };`
+      const importReplace = `\nimport * as ${this.answers.name} from './${this.answers.name}/${this.answers.name}';\n\nexport`;
+      const importContent = content.replace(/\s*export/gim, importReplace);
+      const newContent = importContent.replace(/(,\s*|\s*)};/gmi, replace);
       this.fs.write(path, newContent);
     } else {
-      const fileString = `import * as ${name} from './${name}/${name}';\n\nexport { ${name} };\n`
+      const fileString = `import * as ${this.answers.name} from './${this.answers.name}/${this.answers.name}';\n\nexport { ${this.answers.name} };\n`
       this.fs.write("src/schemas/index.ts", fileString);
     }
-  }
-
-  install() {
-    this.installDependencies();
   }
 };
