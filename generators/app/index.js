@@ -71,10 +71,10 @@ module.exports = class extends Generator {
         default: "sample"
       },
     ]);
-    this.answers.apiNameCap = _.capitalize(this.answers.apiName);
   }
 
   writing() {
+    const apiNameCap = _.capitalize(this.answers.apiName);
     this.fs.copyTpl(
       this.templatePath("tslint.json"),
       this.destinationPath(`${this.answers.serviceName}/tslint.json`),
@@ -240,12 +240,30 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.answers.serviceName}/src/schemas/${this.answers.name}/${this.answers.name}.ts`), 
       {
         ...this.answers,
+        apiNameCap,
       }
     );
 
     this.fs.copyTpl(
       this.templatePath("src/schemas/sample.spec"),
       this.destinationPath(`${this.answers.serviceName}/src/schemas/${this.answers.name}/${this.answers.name}.spec.ts`),
+      {
+        ...this.answers,
+        apiNameCap,
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath("db/migrations/20180128104235_initial"),
+      this.destinationPath(`${this.answers.serviceName}/db/migrations/20180128104235_initial.js`),
+      {
+        ...this.answers,
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath("db/seeds/initial"),
+      this.destinationPath(`${this.answers.serviceName}/db/seeds/initial.js`),
       {
         ...this.answers,
       }

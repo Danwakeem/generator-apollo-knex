@@ -3,10 +3,10 @@ const faker = require('faker');
 const _ = require('lodash');
 
 exports.seed = function(knex, Promise) {
-  return knex('<% apiName %>')
+  return knex('<%= apiName %>')
     .del()
     .then(() => {
-      return knex('<% apiName %>').insert([
+      return knex('<%= apiName %>').insert([
         {id: uuid()},
       ]);
     });

@@ -1,4 +1,4 @@
-# <% serviceName %>
+# <%= serviceName %>
 This project is a graphql API generated via the [apollo-knex generator](https://github.com/danwakeem/apollo-knex).
 
 ## Setup

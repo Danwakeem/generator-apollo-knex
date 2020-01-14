@@ -1,9 +1,9 @@
 import { createSandbox } from 'sinon';
-import { resolvers } from './<% apiName %>';
+import { resolvers } from './<%= apiName %>';
 
 const sandbox = createSandbox();
 
-describe('<% apiNameCap %>', () => {
+describe('<%=apiNameCap %>', () => {
   afterEach(() => sandbox.restore());
   describe('Query', () => {
     let query;
@@ -11,8 +11,8 @@ describe('<% apiNameCap %>', () => {
       query = resolvers.Query;
     });
 
-    describe('<% apiNameCap %>', () => {
-      it('should return <% apiNameCap %> by id', async () => {
+    describe('<%= apiNameCap %>', () => {
+      it('should return <%= apiNameCap %> by id', async () => {
         const expected = { id: 'xxx' };
         const firstSpy = sandbox.fake.resolves(expected);
         const whereSpy = sandbox.fake.returns({
@@ -27,7 +27,7 @@ describe('<% apiNameCap %>', () => {
         };
         const input = {id: '100'};
   
-        const result = await query.<% apiNameCap %>(null, input, context);
+        const result = await query.<%= apiNameCap %>(null, input, context);
         sandbox.assert.calledOnce(whereSpy);
         sandbox.assert.calledWith(whereSpy, {
           id: input.id,

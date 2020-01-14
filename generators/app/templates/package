@@ -1,8 +1,8 @@
 {
-  "name": "<% serviceName %>",
+  "name": "<%= serviceName %>",
   "version": "1.0.0",
-  "description": "<% description %>",
-  "author": "<% author %> <<% email %>>",
+  "description": "<%= description %>",
+  "author": "<%= author %> <<%= email %>>",
   "license": "MIT",
   "engines": {
     "node": ">= 8",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "<% gitUrl %>"
+    "url": "<%= gitUrl %>"
   },
   "keywords": [
     "node",
