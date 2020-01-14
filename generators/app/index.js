@@ -261,6 +261,6 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.installDependencies();
+    this.npmInstall(null, {}, { cwd: this.answers.serviceName });
   }
 };
