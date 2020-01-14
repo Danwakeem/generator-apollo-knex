@@ -1,6 +1,6 @@
 {
   "name": "generator-apollo-knex",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A Generator for a simple apollo server integrated with knex",
   "homepage": "https://github.com/danwakeem/apollo-knex",
   "author": {
