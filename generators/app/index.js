@@ -1,16 +1,22 @@
-'use strict';
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
-const _ = require('lodash');
+"use strict";
+const Generator = require("yeoman-generator");
+const chalk = require("chalk");
+const yosay = require("yosay");
+const _ = require("lodash");
 
 module.exports = class extends Generator {
   async prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay(`Welcome to the funkadelic ${chalk.red('generator-apollo-knex')} generator! Are you ready to get wild?`)
+      yosay(
+        `Welcome to the funkadelic ${chalk.red(
+          "generator-apollo-knex"
+        )} generator! Are you ready to get wild?`
+      )
     );
-    this.log('We are going to guide you through creating your an apollo graphql scaffold');
+    this.log(
+      "We are going to guide you through creating your an apollo graphql scaffold"
+    );
 
     this.answers = await this.prompt([
       {
@@ -52,8 +58,7 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "name",
-        message:
-          "File name for your sample schema file",
+        message: "File name for your sample schema file",
         default: "sample"
       },
       {
@@ -69,7 +74,7 @@ module.exports = class extends Generator {
         message:
           "This is the table name that will map to your sample graphql schema.",
         default: "sample"
-      },
+      }
     ]);
   }
 
@@ -79,7 +84,7 @@ module.exports = class extends Generator {
       this.templatePath("tslint.json"),
       this.destinationPath(`${this.answers.serviceName}/tslint.json`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -87,7 +92,7 @@ module.exports = class extends Generator {
       this.templatePath("tsconfig.json"),
       this.destinationPath(`${this.answers.serviceName}/tsconfig.json`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -95,15 +100,15 @@ module.exports = class extends Generator {
       this.templatePath("README"),
       this.destinationPath(`${this.answers.serviceName}/README.md`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
     this.fs.copyTpl(
-      this.templatePath("prettierrc"),
+      this.templatePath("pretty"),
       this.destinationPath(`${this.answers.serviceName}/.prettierrc`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -111,7 +116,7 @@ module.exports = class extends Generator {
       this.templatePath("prettierignore"),
       this.destinationPath(`${this.answers.serviceName}/.prettierignore`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -119,7 +124,7 @@ module.exports = class extends Generator {
       this.templatePath("nodemon.json"),
       this.destinationPath(`${this.answers.serviceName}/nodemon.json`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -127,7 +132,7 @@ module.exports = class extends Generator {
       this.templatePath("license"),
       this.destinationPath(`${this.answers.serviceName}/license`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -135,7 +140,7 @@ module.exports = class extends Generator {
       this.templatePath("knexfile.js"),
       this.destinationPath(`${this.answers.serviceName}/knexfile.js`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -143,7 +148,7 @@ module.exports = class extends Generator {
       this.templatePath("gitignore"),
       this.destinationPath(`${this.answers.serviceName}/.gitignore`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -151,7 +156,7 @@ module.exports = class extends Generator {
       this.templatePath("Dockerf"),
       this.destinationPath(`${this.answers.serviceName}/Dockerfile`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -159,7 +164,7 @@ module.exports = class extends Generator {
       this.templatePath("docker-compose"),
       this.destinationPath(`${this.answers.serviceName}/docker-compose.yml`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -167,7 +172,7 @@ module.exports = class extends Generator {
       this.templatePath("docker-compose"),
       this.destinationPath(`${this.answers.serviceName}/docker-compose.yml`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -175,7 +180,7 @@ module.exports = class extends Generator {
       this.templatePath("env"),
       this.destinationPath(`${this.answers.serviceName}/.env`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -183,7 +188,7 @@ module.exports = class extends Generator {
       this.templatePath("util/wait-for-it.sh"),
       this.destinationPath(`${this.answers.serviceName}/util/wait-for-it.sh`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -191,7 +196,7 @@ module.exports = class extends Generator {
       this.templatePath("src/server"),
       this.destinationPath(`${this.answers.serviceName}/src/server.ts`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -199,7 +204,7 @@ module.exports = class extends Generator {
       this.templatePath("src/schema"),
       this.destinationPath(`${this.answers.serviceName}/src/schema.ts`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -207,7 +212,7 @@ module.exports = class extends Generator {
       this.templatePath("src/main"),
       this.destinationPath(`${this.answers.serviceName}/src/main.ts`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -215,7 +220,7 @@ module.exports = class extends Generator {
       this.templatePath("src/database"),
       this.destinationPath(`${this.answers.serviceName}/src/database.ts`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -223,7 +228,7 @@ module.exports = class extends Generator {
       this.templatePath("src/context"),
       this.destinationPath(`${this.answers.serviceName}/src/context.ts`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -231,33 +236,39 @@ module.exports = class extends Generator {
       this.templatePath("src/schemas/index"),
       this.destinationPath(`${this.answers.serviceName}/src/schemas/index.ts`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
     this.fs.copyTpl(
       this.templatePath("src/schemas/sample"),
-      this.destinationPath(`${this.answers.serviceName}/src/schemas/${this.answers.name}/${this.answers.name}.ts`), 
+      this.destinationPath(
+        `${this.answers.serviceName}/src/schemas/${this.answers.name}/${this.answers.name}.ts`
+      ),
       {
         ...this.answers,
-        apiNameCap,
+        apiNameCap
       }
     );
 
     this.fs.copyTpl(
       this.templatePath("src/schemas/sample.spec"),
-      this.destinationPath(`${this.answers.serviceName}/src/schemas/${this.answers.name}/${this.answers.name}.spec.ts`),
+      this.destinationPath(
+        `${this.answers.serviceName}/src/schemas/${this.answers.name}/${this.answers.name}.spec.ts`
+      ),
       {
         ...this.answers,
-        apiNameCap,
+        apiNameCap
       }
     );
 
     this.fs.copyTpl(
       this.templatePath("db/migrations/20180128104235_initial"),
-      this.destinationPath(`${this.answers.serviceName}/db/migrations/20180128104235_initial.js`),
+      this.destinationPath(
+        `${this.answers.serviceName}/db/migrations/20180128104235_initial.js`
+      ),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -265,7 +276,7 @@ module.exports = class extends Generator {
       this.templatePath("db/seeds/initial"),
       this.destinationPath(`${this.answers.serviceName}/db/seeds/initial.js`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
 
@@ -273,7 +284,7 @@ module.exports = class extends Generator {
       this.templatePath("package"),
       this.destinationPath(`${this.answers.serviceName}/package.json`),
       {
-        ...this.answers,
+        ...this.answers
       }
     );
   }
