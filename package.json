@@ -77,7 +77,8 @@
   },
   "scripts": {
     "pretest": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "lint:fix": "eslint --fix __tests__/**/*.js"
   },
   "repository": "Danwakeem/generator-apollo-knex",
   "license": "MIT"

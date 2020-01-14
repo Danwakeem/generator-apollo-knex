@@ -1,9 +1,19 @@
 language: node_js
 node_js:
-  - v13
+  - '8'
   - v12
   - v10
   - v8
-  - v6
-  - v4
+cache:
+  directories:
+  - node_modules
 after_script: cat ./coverage/lcov.info | coveralls
+jobs:
+  include:
+    - stage: "Deploy"
+      if: (NOT type IN (pull_request)) AND ((branch = master))
+      deploy:
+        provider: npm
+        email: $NPM_EMAIL
+        api_key: $NPM_API_KEY
+        on: master

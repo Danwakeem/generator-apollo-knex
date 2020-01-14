@@ -169,14 +169,6 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
-      this.templatePath("docker-compose"),
-      this.destinationPath(`${this.answers.serviceName}/docker-compose.yml`),
-      {
-        ...this.answers
-      }
-    );
-
-    this.fs.copyTpl(
       this.templatePath("env"),
       this.destinationPath(`${this.answers.serviceName}/.env`),
       {
