@@ -3,6 +3,7 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const _ = require('lodash');
+const fs = require('fs');
 
 module.exports = class extends Generator {
   async prompting() {
@@ -40,7 +41,7 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(
-      this.templatePath("src/schemas/sample"),
+      this.templatePath("sample"),
       this.destinationPath(`src/schemas/${this.answers.name}/${this.answers.name}.ts`), 
       {
         ...this.answers,
@@ -48,7 +49,7 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
-      this.templatePath("src/schemas/sample.spec"),
+      this.templatePath("sample.spec"),
       this.destinationPath(`src/schemas/${this.answers.name}/${this.answers.name}.spec.ts`),
       {
         ...this.answers,
