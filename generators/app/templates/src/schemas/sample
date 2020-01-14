@@ -5,6 +5,10 @@ export const typeDef = `
     <%= apiName %>(id: String!): <%= apiNameCap %>!
   }
 
+  extend type Mutation {
+    <%= apiName %>(id: String!): <%= apiNameCap %>
+  }
+
   type <%= apiNameCap %> {
     id: String!
   }
@@ -19,4 +23,14 @@ export const resolvers = {
         .first();
     },
   },
+  Mutation: {
+    async <%= apiName %>(_, args, context) {
+      const [<%= apiName %>] = await context.db
+        .query(tableName)
+        .insert(args)
+        .returning('*');
+
+      return <%= apiName %>;
+    }
+  }
 };
