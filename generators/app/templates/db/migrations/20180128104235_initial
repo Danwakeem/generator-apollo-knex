@@ -1,7 +1,7 @@
 exports.up = async (knex) =>
   knex.schema.raw(`
     CREATE TABLE public.<%= apiName %> (
-      id uuid NOT NULL,
+      id uuid NOT NULL
     );
   `);
 
