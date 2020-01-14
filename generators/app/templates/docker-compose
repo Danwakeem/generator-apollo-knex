@@ -1,0 +1,20 @@
+version: '3'
+services:
+  <% composeName %>:
+    build: ./
+    command: npm start
+    volumes:
+      - ./:/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - '9000:5432'
+    environment:
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+      POSTGRES_DB: 'quizzes'

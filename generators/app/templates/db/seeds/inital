@@ -1,0 +1,13 @@
+const uuid = require('uuid/v1');
+const faker = require('faker');
+const _ = require('lodash');
+
+exports.seed = function(knex, Promise) {
+  return knex('<% apiName %>')
+    .del()
+    .then(() => {
+      return knex('<% apiName %>').insert([
+        {id: uuid()},
+      ]);
+    });
+};

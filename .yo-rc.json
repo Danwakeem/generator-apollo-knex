@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "danwakeem",
+      "authorEmail": "danwakeem@gmail.com",
+      "authorUrl": "https://www.danwakeem.com"
+    }
+  }
+}

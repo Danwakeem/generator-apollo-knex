@@ -1,0 +1,22 @@
+const tableName = '<% tableName %>';
+
+export const typeDef = `
+  extend type Query {
+    <% apiName %>(id: String!): <% apiNameCap %>!
+  }
+
+  type <% apiNameCap %> {
+    id: String!
+  }
+`;
+
+export const resolvers = {
+  Query: {
+    <% apiName %>(_, { id = '' }, context) {
+      return context.db
+        .query(tableName)
+        .where({ id })
+        .first();
+    },
+  },
+};
